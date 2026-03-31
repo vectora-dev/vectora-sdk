@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vectora"
+version = "0.1.0"
+description = "AI Assurance Platform - Monitor, Explain, Govern every AI system in production"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [{ name = "Vectora", email = "hello@vectora.ai" }]
+keywords = ["machine learning", "monitoring", "explainability", "drift detection", "SHAP", "MLOps"]
+dependencies = [
+  "numpy>=1.21",
+  "requests>=2.28",
+  "scikit-learn>=1.0",
+  "shap>=0.42",
+]
+
+[project.optional-dependencies]
+dev = ["build>=1.2.0", "pytest>=8.0"]
+
+[project.urls]
+Homepage = "https://vectora.ai"
+Repository = "https://github.com/vectora-dev/vectora-sdk"
+
+[tool.setuptools.packages.find]
+include = ["vectora*"]
