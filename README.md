@@ -2,6 +2,11 @@
 
 Vectora helps you monitor sklearn models in production without adding latency to your prediction path.
 
+Live package:
+- PyPI: https://pypi.org/project/vectora/
+- App: https://vectora-dev.vercel.app
+- Repository: https://github.com/vectora-dev/vectora-sdk
+
 The SDK captures:
 - prediction metrics like accuracy, F1, precision, and recall
 - feature distribution summaries for drift detection
@@ -16,11 +21,16 @@ pip install vectora
 
 ## Quickstart
 
+Create an account in the Vectora app first, then copy your API key and model ID from onboarding.
+
 ```python
 from vectora import VectoraClient
 from vectora.models import SklearnConnector
 
-client = VectoraClient(api_key="vct_live_xxx")
+client = VectoraClient(
+    api_key="vct_live_xxx",
+    base_url="https://vectora-dev.vercel.app",
+)
 connector = SklearnConnector(
     client=client,
     model=your_sklearn_model,
@@ -54,7 +64,7 @@ If the network call fails, the SDK logs the error to stderr and never raises it 
 ```python
 client = VectoraClient(
     api_key="vct_live_xxx",
-    base_url="https://vectora.ai",
+    base_url="https://vectora-dev.vercel.app",
     timeout=5.0,
     max_retries=2,
 )
@@ -72,6 +82,12 @@ predictions = connector.predict(X, y_true=y_true)
 `vectora.llm` and `vectora.agent` are reserved for future releases and raise `ComingSoonError` when accessed.
 
 ## Release
+
+The current public package is:
+
+```bash
+pip install vectora
+```
 
 Tagging the repository with `v*` triggers the GitHub Actions publish workflow in [`.github/workflows/publish.yml`](.github/workflows/publish.yml).
 
